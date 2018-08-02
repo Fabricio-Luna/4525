@@ -1,0 +1,6 @@
+---
+
+- name: chamando role web
+  hosts: all
+  roles: 
+   - web

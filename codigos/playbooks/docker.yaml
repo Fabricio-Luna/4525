@@ -1,0 +1,20 @@
+---
+- name: instalando docker
+  hosts: docker
+  tasks:
+  - name: criando container
+    docker_container:
+     name: index1
+     image: httpd
+     state: started
+     volumes:
+      - index:/usr/local/apache2/htdocs
+     ports: 8080:80
+  - name: criando containers
+    docker_container:
+     name: index2
+     image: httpd
+     state: started
+     volumes: 
+      - index:/usr/local/apache2/htdocs
+     ports: 8081:80 

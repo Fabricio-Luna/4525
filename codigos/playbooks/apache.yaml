@@ -1,0 +1,6 @@
+---
+
+- name: chamando role apache
+  hosts: all
+  roles: 
+   - apache

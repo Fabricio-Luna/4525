@@ -1,0 +1,12 @@
+---
+- name: Criando usuarios no SO
+  hosts: all
+  tasks:
+  vars:
+  - username: sysadmin
+  
+  tasks:
+  - name: criando os usarios no servidor
+    user: 
+     name: "{{ username }}"
+     shell: /bin/bash

@@ -1,0 +1,12 @@
+---
+
+- name: instalando pacotes
+  hosts: all
+  vars:
+  - pacote: vim nano sl ccze dnsutils
+
+  tasks:
+  - name: instalando o pacote
+    apt: 
+      name: "{{ pacote }}"
+      state: present 

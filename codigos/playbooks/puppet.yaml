@@ -1,0 +1,24 @@
+---
+
+- name: instalando a puppet
+  hosts: devops
+  vars:
+  - pacote: puppetserver
+
+  tasks:
+  - name: instalando o puppet
+    apt: 
+      name: "{{ pacote }}"
+      state: present 
+
+- name: instalando a puppet
+  hosts: automation docker
+  vars:
+  - pacote: puppet
+
+  tasks:
+  - name: instalando o puppet
+    apt:
+      name: "{{ pacote }}"
+      state: present
+ 

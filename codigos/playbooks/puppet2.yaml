@@ -1,0 +1,33 @@
+---
+- name: instalando puppet
+  hosts: docker automation
+  vars:
+  - pacote: puppet-agent
+  tasks:
+  - name: download repo puppet
+    get_url:
+     url: https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
+     dest: /tmp/puppet.rpm
+    when: ansible_os_family == "RedHat"
+  - name: instalando o repositorio
+    yum:
+     name: /tmp/puppet.rpm
+    when: ansible_os_family == "RedHat"
+  - name: instalando puppet redhat
+    yum:
+      name: "{{pacote}}"
+      state: present
+    when: ansible_os_family == "RedHat"
+  - name: instalando REPO puppet debian
+    get_url: 
+      url: https://apt.puppetlabs.com/puppet5-release-xenial.deb
+      dest: /tmp/puppet.deb
+    when: ansible_os_family == "Debian"
+  - name: instalando o REPO debian
+    apt:
+     deb: /tmp/puppet.deb
+    when: ansible_os_family == "Debian"
+  - name: Instalando o puppet
+    package: 
+     name: puppet-agent
+     state: present
